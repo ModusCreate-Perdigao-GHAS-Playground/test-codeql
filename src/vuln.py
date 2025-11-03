@@ -19,6 +19,8 @@ def login():
     # Vulnerable to SQL injection
     query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
     print(f"Executing query: {query}")
+    print(f"Executing query existing file: {query}")
+
 
     connection = sqlite3.connect("example.db")
     cursor = connection.cursor()

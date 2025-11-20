@@ -1,6 +1,18 @@
 import sqlite3
+import hashlib
 from flask import Flask, request
 
+
+
+
+def hash_secret(secret):
+    # VULNERABLE: MD5 now considered cryptographically broken
+    return hashlib.md5(secret.encode()).hexdigest()
+def deserialize(data):
+    # VULNERABLE: Deserializing untrusted data can lead to code execution
+    obj = pickle.loads(data)
+    return obj
+    
 app = Flask(__name__)
 
 def initialize_database():
